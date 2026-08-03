@@ -1,6 +1,10 @@
+import Calculator from "./assets/components/Calculator/Calculator";
+
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
-export default App
+    <div>
+      <Calculator />
+    </div>
+  );
+};
+export default App;
