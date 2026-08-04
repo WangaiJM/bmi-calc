@@ -100,7 +100,7 @@
           right: 0;
           z-index: 1;
           color: hsl(var(--blue-500));
-          margin-right: var(--spacing-200);
+          margin-right: var(--spacing-300);
         }
       }
 
@@ -113,6 +113,7 @@
         border-radius: 1.2rem;
         color: hsl(var(--blue-500));
         padding: var(--spacing-300) var(--spacing-100);
+        width: 100%;
 
         @include breakpoint("desktop") {
           width: 28rem;
@@ -162,7 +163,7 @@
           right: 0;
           z-index: 1;
           color: hsl(var(--blue-500));
-          margin-right: var(--spacing-200);
+          margin-right: var(--spacing-300);
         }
       }
 
@@ -183,6 +184,7 @@
           border-radius: 1.2rem;
           color: hsl(var(--blue-500));
           padding: var(--spacing-300) var(--spacing-100);
+          width: 100%;
 
           @include breakpoint("desktop") {
             width: 28rem;

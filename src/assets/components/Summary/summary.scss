@@ -1,0 +1,54 @@
+@use "../../../index.scss" as *;
+
+.summary {
+  margin-top: var(--spacing-800);
+  position: relative;
+  @include flex(column);
+  gap: var(--spacing-600);
+
+  &-illustration {
+    scale: 1.2;
+  }
+
+  &-content {
+    @include flex(column);
+    gap: var(--spacing-400);
+
+    h2 {
+      color: hsl(var(--blue-900));
+    }
+    p {
+      color: hsl(var(--gray-500));
+    }
+  }
+  @include breakpoint("tablet") {
+    @include flex(row);
+    gap: var(--spacing-900);
+
+    &-illustration {
+      flex: 1;
+      align-self: flex-end;
+    }
+
+    &-content {
+      flex: 1;
+      align-self: center;
+    }
+  }
+
+  @include breakpoint("desktop") {
+    @include flex(row);
+    justify-content: space-between;
+
+    &-illustration {
+      width: 56rem;
+      align-self: flex-end;
+      scale: 1;
+    }
+
+    &-content {
+      width: 46rem;
+      align-self: center;
+    }
+  }
+}
