@@ -1,3 +1,65 @@
+@font-face {
+  font-family: "Inter Semi";
+  src: url(./assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+:root {
+  // colors
+  --white: 0, 100%, 100%;
+  --black: 0, 0%, 0%;
+
+  --gray-500: 215, 17%, 45%;
+  --gray-300: 215, 43%, 77%;
+
+  --blue-900: 215, 31%, 21%;
+  --blue-500: 227, 92%, 58%;
+  --blue-300: 209, 69%, 82%;
+  --blue-100: 228, 94%, 94%;
+
+  --gradient-1: 183, 95%, 92%;
+  --gradient-2: 216, 95%, 92%;
+
+  // spacing
+  --spacing-0: 0;
+  --spacing-100: 0.8rem;
+  --spacing-200: 1.6rem;
+  --spacing-300: 2.4rem;
+  --spacing-400: 3.2rem;
+  --spacing-500: 4rem;
+  --spacing-600: 4.8rem;
+  --spacing-700: 5.6rem;
+  --spacing-800: 6.4rem;
+  --spacing-900: 7.2rem;
+  --spacing-1000: 8rem;
+  --spacing-1100: 8.8rem;
+  --spacing-1200: 9.6rem;
+  --spacing-1300: 10.4rem;
+  --spacing-1400: 11.2rem;
+  --spacing-1600: 12.8rem;
+  --spacing-1800: 14.4rem;
+
+  // typography
+  --fs-087: 1.4rem;
+  --fs-093: 1.5rem;
+  --fs-100: 1.6rem;
+  --fs-125: 2rem;
+  --fs-150: 2.4rem;
+  --fs-200: 3.2rem;
+  --fs-300: 4.8rem;
+  --fs-400: 6.4rem;
+
+  --fw-b: 700;
+  --fw-m: 500;
+  --fw-r: 400;
+
+  --lh-1: 1.1;
+  --lh-2: 1.2;
+  --lh-3: 1.5;
+
+  --ls-0: 0;
+  --ls-1: -5px;
+}
+
 *,
 *::after,
 *::before {
@@ -21,7 +83,7 @@ p {
 a {
   text-decoration: none;
 }
-
+// mixins
 @mixin flex($direction) {
   display: flex;
   flex-direction: $direction;
@@ -37,4 +99,82 @@ a {
       @content;
     }
   }
+}
+
+@mixin container {
+  padding: var(--spacing-400) var(--spacing-300);
+
+  @include breakpoint("tablet") {
+    padding: var(--spacing-400) var(--spacing-500);
+  }
+  @include breakpoint("desktop") {
+    padding: var(--spacing-1100) var(--spacing-1800);
+  }
+}
+// text presets
+.text-preset-1 {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-b);
+  line-height: var(--lh-1);
+  letter-spacing: var(--ls-1);
+}
+
+.text-preset-2 {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-b);
+  line-height: var(--lh-1);
+  letter-spacing: var(--ls-1);
+}
+
+.text-preset-3 {
+  font-size: var(--fs-200);
+  font-weight: var(--fw-m);
+  line-height: var(--lh-1);
+  letter-spacing: var(--ls-1);
+}
+
+.text-preset-4 {
+  font-size: var(--fs-150);
+  font-weight: var(--fw-b);
+  line-height: var(--lh-2);
+  letter-spacing: var(--ls-1);
+}
+.text-preset-5 {
+  font-size: var(--fs-125);
+  font-weight: var(--fw-b);
+  line-height: var(--lh-2);
+  letter-spacing: var(--ls-1);
+}
+.text-preset-6 {
+  font-size: var(--fs-100);
+  line-height: var(--lh-3);
+  letter-spacing: var(--ls-0);
+}
+.text-preset-7 {
+  font-size: var(--fs-087);
+  line-height: var(--lh-3);
+  letter-spacing: var(--ls-0);
+}
+
+.font-bold {
+  font-weight: var(--fw-b);
+}
+.font-medium {
+  font-weight: var(--fw-m);
+}
+.font-regular {
+  font-weight: var(--fw-r);
+}
+// base
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Inter Semi", sans-serif;
+  font-size: 1.6rem;
+  min-height: 100vh;
+  max-width: calc(10 * var(--spacing-1800));
+  margin: auto;
+  outline: 1px solid red;
+  @include container;
 }
