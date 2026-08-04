@@ -1,0 +1,85 @@
+@use "../../../index.scss" as *;
+
+.header {
+  @include flex(column);
+  gap: var(--spacing-500);
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 80%;
+    width: 100%;
+    background: linear-gradient(
+      to bottom right,
+      hsl(var(--white)),
+      hsl(var(--gradient-1)),
+      hsl(var(--gradient-2))
+    );
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-bottom-right-radius: var(--spacing-1000);
+    border-bottom-left-radius: var(--spacing-1000);
+
+    @include breakpoint("desktop") {
+      width: 70%;
+      height: 80%;
+      border-bottom-right-radius: var(--spacing-1400);
+      border-bottom-left-radius: 0;
+      background: linear-gradient(
+        to right,
+        hsl(var(--white)),
+        hsl(var(--gradient-1)),
+        hsl(var(--gradient-2))
+      );
+    }
+  }
+
+  &-main {
+    @include flex(row);
+    justify-content: center;
+    align-items: center;
+
+    @include breakpoint("desktop") {
+      justify-content: start;
+    }
+  }
+
+  .hero {
+    @include flex(column);
+    gap: var(--spacing-500);
+    position: relative;
+
+    @include breakpoint("desktop") {
+      @include flex(row);
+    }
+
+    &-info {
+      @include flex(column);
+      gap: var(--spacing-300);
+      text-align: center;
+
+      @include breakpoint("desktop") {
+        text-align: left;
+        flex: 1;
+        align-self: center;
+      }
+
+      h1 {
+        color: hsl(var(--blue-900));
+        span {
+          display: block;
+        }
+      }
+      p {
+        color: hsl(var(--gray-500));
+      }
+    }
+
+    &-calc {
+      @include breakpoint("desktop") {
+        flex: 1;
+      }
+    }
+  }
+}

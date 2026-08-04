@@ -1,0 +1,231 @@
+@use "../../../index.scss" as *;
+
+.calc {
+  background-color: hsl(var(--white));
+  box-shadow: 0 10px 20px hsla(var(--blue-900), 0.5);
+  padding: var(--spacing-300);
+  border-radius: var(--spacing-200);
+  @include flex(column);
+  gap: var(--spacing-300);
+
+  @include breakpoint("tablet") {
+    padding: var(--spacing-400);
+    gap: var(--spacing-400);
+  }
+
+  h2 {
+    color: hsl(var(--blue-900));
+  }
+
+  &-choice {
+    @include flex(row);
+
+    .radio-group {
+      flex: 1;
+      position: relative;
+
+      input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+
+        + label {
+          position: relative;
+          cursor: pointer;
+          padding-left: 4rem;
+          font-weight: var(--fw-m);
+          color: hsl(var(--blue-900));
+
+          &::before {
+            position: absolute;
+            content: "";
+            width: 2rem;
+            height: 2rem;
+            border: 0.2rem solid hsla(var(--blue-500), 0.4);
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        &:checked {
+          + label {
+            &::before {
+              border: 0;
+              background: radial-gradient(
+                circle,
+                hsl(var(--blue-500)) 0%,
+                hsl(var(--blue-500)) 20%,
+                hsl(var(--white)) 100%
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-metric {
+    @include flex(column);
+    gap: var(--spacing-200);
+
+    @include breakpoint("tablet") {
+      @include flex(row);
+    }
+
+    .calc-group {
+      @include flex(column);
+      gap: var(--spacing-100);
+
+      label {
+        color: hsl(var(--gray-500));
+      }
+
+      &:first-child .input-wrapper::after {
+        content: "cm";
+      }
+
+      &:last-child .input-wrapper::after {
+        content: "kg";
+      }
+
+      .input-wrapper {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 0;
+          z-index: 1;
+          color: hsl(var(--blue-500));
+          margin-right: var(--spacing-200);
+        }
+      }
+
+      input {
+        position: relative;
+        appearance: textfield;
+        -moz-appearance: textfield;
+        border: 0;
+        outline: 0.2rem solid hsl(var(--gray-500));
+        border-radius: 1.2rem;
+        color: hsl(var(--blue-500));
+        padding: var(--spacing-300) var(--spacing-100);
+
+        @include breakpoint("desktop") {
+          width: 28rem;
+        }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          appearance: none;
+          margin: 0;
+        }
+
+        &::placeholder {
+          color: hsl(var(--blue-500));
+        }
+      }
+    }
+  }
+
+  &-imperial {
+    @include flex(column);
+    gap: var(--spacing-300);
+
+    .calc-group {
+      @include flex(column);
+      gap: var(--spacing-100);
+
+      &:nth-child(1) .input-wrapper:nth-child(1)::after {
+        content: "ft";
+      }
+      &:nth-child(1) .input-wrapper:nth-child(2)::after {
+        content: "in";
+      }
+      &:nth-child(2) .input-wrapper:nth-child(1)::after {
+        content: "st";
+      }
+      &:nth-child(2) .input-wrapper:nth-child(2)::after {
+        content: "lbs";
+      }
+
+      .input-wrapper {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 0;
+          z-index: 1;
+          color: hsl(var(--blue-500));
+          margin-right: var(--spacing-200);
+        }
+      }
+
+      &-inputs {
+        @include flex(column);
+        gap: var(--spacing-200);
+
+        @include breakpoint("tablet") {
+          @include flex(row);
+        }
+
+        input {
+          position: relative;
+          appearance: textfield;
+          -moz-appearance: textfield;
+          border: 0;
+          outline: 0.2rem solid hsl(var(--gray-500));
+          border-radius: 1.2rem;
+          color: hsl(var(--blue-500));
+          padding: var(--spacing-300) var(--spacing-100);
+
+          @include breakpoint("desktop") {
+            width: 28rem;
+          }
+
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button {
+            appearance: none;
+            margin: 0;
+          }
+
+          &::placeholder {
+            color: hsl(var(--blue-500));
+          }
+        }
+      }
+    }
+  }
+}
+.results {
+  background-color: hsl(var(--blue-500));
+  padding: var(--spacing-400);
+  color: hsl(var(--white));
+  border-radius: var(--spacing-200);
+
+  @include breakpoint("tablet") {
+    border-top-left-radius: 0;
+    border-top-right-radius: var(--spacing-1400);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: var(--spacing-1400);
+  }
+
+  &-input {
+    @include flex(column);
+    gap: var(--spacing-300);
+  }
+
+  &-output {
+    @include flex(column);
+    gap: var(--spacing-300);
+  }
+  &-outcome {
+    @include flex(column);
+    gap: var(--spacing-100);
+  }
+}

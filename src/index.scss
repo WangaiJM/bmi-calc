@@ -39,14 +39,14 @@
   --spacing-1800: 14.4rem;
 
   // typography
-  --fs-087: 1.4rem;
-  --fs-093: 1.5rem;
-  --fs-100: 1.6rem;
-  --fs-125: 2rem;
-  --fs-150: 2.4rem;
-  --fs-200: 3.2rem;
-  --fs-300: 4.8rem;
-  --fs-400: 6.4rem;
+  --fs-087: clamp(1.2rem, 1.1rem + 0.3vw, 1.4rem);
+  --fs-093: clamp(1.3rem, 1.2rem + 0.3vw, 1.5rem);
+  --fs-100: clamp(1.4rem, 1.3rem + 0.4vw, 1.6rem);
+  --fs-125: clamp(1.6rem, 1.4rem + 0.8vw, 2rem);
+  --fs-150: clamp(1.8rem, 1.5rem + 1vw, 2.4rem);
+  --fs-200: clamp(2.2rem, 1.8rem + 1.5vw, 3.2rem);
+  --fs-300: clamp(2.8rem, 2.2rem + 2vw, 4.8rem);
+  --fs-400: clamp(3.2rem, 2.5rem + 3vw, 6.4rem);
 
   --fw-b: 700;
   --fw-m: 500;
@@ -57,7 +57,7 @@
   --lh-3: 1.5;
 
   --ls-0: 0;
-  --ls-1: -5px;
+  --ls-1: -0.5px;
 }
 
 *,
@@ -95,7 +95,7 @@ a {
       @content;
     }
   } @else if $media == "desktop" {
-    @media (min-width: 68.75rem) {
+    @media (min-width: 56.75rem) {
       @content;
     }
   }
@@ -116,34 +116,54 @@ a {
   font-size: var(--fs-400);
   font-weight: var(--fw-b);
   line-height: var(--lh-1);
-  letter-spacing: var(--ls-1);
+  letter-spacing: var(--ls-0);
+
+  @include breakpoint("desktop") {
+    letter-spacing: var(--ls-1);
+  }
 }
 
 .text-preset-2 {
   font-size: var(--fs-300);
   font-weight: var(--fw-b);
   line-height: var(--lh-1);
-  letter-spacing: var(--ls-1);
+  letter-spacing: var(--ls-0);
+
+  @include breakpoint("desktop") {
+    letter-spacing: var(--ls-1);
+  }
 }
 
 .text-preset-3 {
   font-size: var(--fs-200);
   font-weight: var(--fw-m);
   line-height: var(--lh-1);
-  letter-spacing: var(--ls-1);
+  letter-spacing: var(--ls-0);
+
+  @include breakpoint("desktop") {
+    letter-spacing: var(--ls-1);
+  }
 }
 
 .text-preset-4 {
   font-size: var(--fs-150);
   font-weight: var(--fw-b);
   line-height: var(--lh-2);
-  letter-spacing: var(--ls-1);
+  letter-spacing: var(--ls-0);
+
+  @include breakpoint("desktop") {
+    letter-spacing: var(--ls-1);
+  }
 }
 .text-preset-5 {
   font-size: var(--fs-125);
   font-weight: var(--fw-b);
   line-height: var(--lh-2);
-  letter-spacing: var(--ls-1);
+  letter-spacing: var(--ls-0);
+
+  @include breakpoint("desktop") {
+    letter-spacing: var(--ls-1);
+  }
 }
 .text-preset-6 {
   font-size: var(--fs-100);

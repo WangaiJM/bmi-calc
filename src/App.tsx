@@ -1,10 +1,10 @@
-import Calculator from "./assets/components/Calculator/Calculator";
+import Hero from "./assets/components/Hero/Hero";
 
 const App = () => {
   return (
-    <div>
-      <Calculator />
-    </div>
+    <main>
+      <Hero />
+    </main>
   );
 };
 export default App;

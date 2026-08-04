@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import "./calculator.scss";
+
 const Calculator = () => {
   type Form = "metric" | "imperial";
   const [unit, setUnit] = useState<Form>("metric");
@@ -82,9 +84,9 @@ const Calculator = () => {
 
   return (
     <section className="calc" aria-label="calculator">
-      <h2>Enter your details below</h2>
+      <h2 className="text-preset-4">Enter your details below</h2>
       <div className="calc-choice">
-        <label htmlFor="metric">
+        <div className="radio-group">
           <input
             type="radio"
             name="unit"
@@ -93,10 +95,11 @@ const Calculator = () => {
             checked={unit === "metric"}
             onChange={() => handleUnitChange("metric")}
           />
-          <span className="checkmark"></span>
-          Metric
-        </label>
-        <label htmlFor="imperial">
+          <label htmlFor="metric" className="text-preset-6">
+            Metric
+          </label>
+        </div>
+        <div className="radio-group">
           <input
             type="radio"
             name="unit"
@@ -105,38 +108,52 @@ const Calculator = () => {
             checked={unit === "imperial"}
             onChange={() => handleUnitChange("imperial")}
           />
-          <span className="checkmark"></span>
-          Imperial
-        </label>
+          <label htmlFor="imperial" className="text-preset-6">
+            Imperial
+          </label>
+        </div>
       </div>
+
       {unit === "metric" && (
         <div className="calc-metric">
           <div className="calc-group">
-            <label htmlFor="metric-height">Height</label>
-            <input
-              type="number"
-              min={1}
-              id="metric-height"
-              required
-              value={height ?? ""}
-              name="metric-height"
-              onChange={(e) =>
-                setHeight(e.target.value ? Number(e.target.value) : null)
-              }
-            />
+            <label htmlFor="metric-height" className="text-preset-7">
+              Height
+            </label>
+            <div className="input-wrapper text-preset-4">
+              <input
+                type="number"
+                min={1}
+                id="metric-height"
+                required
+                value={height ?? ""}
+                name="metric-height"
+                onChange={(e) =>
+                  setHeight(e.target.value ? Number(e.target.value) : null)
+                }
+                className="text-preset-4"
+                placeholder="0"
+              />
+            </div>
           </div>
           <div className="calc-group">
-            <label htmlFor="metric-weight">Weight</label>
-            <input
-              type="number"
-              id="metric-weight"
-              min={1}
-              name="metric-weight"
-              value={weight ?? ""}
-              onChange={(e) =>
-                setWeight(e.target.value ? Number(e.target.value) : null)
-              }
-            />
+            <label htmlFor="metric-weight" className="text-preset-7">
+              Weight
+            </label>
+            <div className="input-wrapper text-preset-4">
+              <input
+                type="number"
+                id="metric-weight"
+                min={1}
+                name="metric-weight"
+                value={weight ?? ""}
+                onChange={(e) =>
+                  setWeight(e.target.value ? Number(e.target.value) : null)
+                }
+                className="text-preset-4"
+                placeholder="0"
+              />
+            </div>
           </div>
         </div>
       )}
@@ -144,65 +161,99 @@ const Calculator = () => {
       {unit === "imperial" && (
         <div className="calc-imperial">
           <div className="calc-group">
-            <label htmlFor="metric-height">Height</label>
-            <input
-              type="number"
-              id="metric-height__feet"
-              name="metric-height"
-              value={feet ?? ""}
-              min={1}
-              onChange={(e) =>
-                setFeet(e.target.value ? Number(e.target.value) : null)
-              }
-            />
-            <input
-              type="number"
-              id="metric-height__inches"
-              name="metric-height"
-              value={inches ?? ""}
-              min={1}
-              onChange={(e) =>
-                setInches(e.target.value ? Number(e.target.value) : null)
-              }
-            />
+            <label htmlFor="metric-height" className="text-preset-7">
+              Height
+            </label>
+            <div className="calc-group-inputs">
+              <div className="input-wrapper text-preset-4">
+                <input
+                  type="number"
+                  id="metric-height__feet"
+                  name="metric-height"
+                  value={feet ?? ""}
+                  min={1}
+                  onChange={(e) =>
+                    setFeet(e.target.value ? Number(e.target.value) : null)
+                  }
+                  placeholder="0"
+                  className="text-preset-4"
+                />
+              </div>
+              <div className="input-wrapper text-preset-4">
+                <input
+                  type="number"
+                  id="metric-height__inches"
+                  name="metric-height"
+                  value={inches ?? ""}
+                  min={1}
+                  onChange={(e) =>
+                    setInches(e.target.value ? Number(e.target.value) : null)
+                  }
+                  placeholder="0"
+                  className="text-preset-4"
+                />
+              </div>
+            </div>
           </div>
           <div className="calc-group">
-            <label htmlFor="metric-weight">Weight</label>
-            <input
-              type="number"
-              id="metric-weight__stone"
-              name="metric-weight"
-              value={stone ?? ""}
-              min={1}
-              onChange={(e) =>
-                setStone(e.target.value ? Number(e.target.value) : null)
-              }
-            />
-            <input
-              type="number"
-              id="metric-weight__pound"
-              name="metric-weight"
-              value={pound ?? ""}
-              min={1}
-              onChange={(e) =>
-                setPound(e.target.value ? Number(e.target.value) : null)
-              }
-            />
+            <label htmlFor="metric-weight" className="text-preset-7">
+              Weight
+            </label>
+            <div className="calc-group-inputs">
+              <div className="input-wrapper text-preset-4">
+                <input
+                  type="number"
+                  id="metric-weight__stone"
+                  name="metric-weight"
+                  value={stone ?? ""}
+                  min={1}
+                  onChange={(e) =>
+                    setStone(e.target.value ? Number(e.target.value) : null)
+                  }
+                  placeholder="0"
+                  className="text-preset-4"
+                />
+              </div>
+              <div className="input-wrapper text-preset-4">
+                <input
+                  type="number"
+                  id="metric-weight__pound"
+                  name="metric-weight"
+                  value={pound ?? ""}
+                  min={1}
+                  onChange={(e) =>
+                    setPound(e.target.value ? Number(e.target.value) : null)
+                  }
+                  placeholder="0"
+                  className="text-preset-4"
+                />
+              </div>
+            </div>
           </div>
         </div>
       )}
 
+      {bmi == null && (
+        <div className="results results-input">
+          <h3 className="text-preset-4">Welcome</h3>
+          <p className="text-preset-7">
+            Enter your height and weight and you’ll see your BMI result here
+          </p>
+        </div>
+      )}
       {bmi !== null && maxweight && minweight && (
-        <div className="results">
+        <div className="results results-output">
           <div className="results-outcome">
-            <p>Your results is</p>
-            <h3>{bmi.toFixed(1)}</h3>
+            <p className="text-preset-6">Your results is</p>
+            <h3 className="text-preset-2">{bmi.toFixed(1)}</h3>
           </div>
           <div className="results-explanation">
-            <p>
-              Your BMI suggests you’re <span>{bmiCategory}</span>. Your ideal
-              weight is between <span>{minweight} Kgs</span> -{" "}
-              <span> {maxweight} Kgs</span>
+            <p className="text-preset-7">
+              Your BMI suggests you’re{" "}
+              <span className="text-preset-5">{bmiCategory}</span>. Your ideal
+              weight is between{" "}
+              <span className="text-preset-6">{minweight} Kgs</span> -{" "}
+              <span className="text-preset-6"> {maxweight} Kgs</span>
             </p>
           </div>
         </div>
