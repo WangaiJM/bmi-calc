@@ -1,0 +1,39 @@
+@use "../../../index.scss" as *;
+
+.tips {
+  padding-block: var(--spacing-600);
+  @include flex(column);
+  gap: var(--spacing-500);
+
+  @include breakpoint("tablet") {
+    padding-block: var(--spacing-700);
+  }
+  @include breakpoint("desktop") {
+    padding-block: var(--spacing-1200);
+    @include flex(row);
+  }
+
+  .tip {
+    @include flex(column);
+    gap: var(--spacing-400);
+
+    &-body {
+      @include flex(column);
+      gap: var(--spacing-300);
+    }
+
+    @include breakpoint("tablet") {
+      @include flex(row);
+      gap: var(--spacing-500);
+
+      &-head {
+        display: flex;
+        align-items: center;
+      }
+    }
+    @include breakpoint("desktop") {
+      @include flex(column);
+      gap: var(--spacing-500);
+    }
+  }
+}
