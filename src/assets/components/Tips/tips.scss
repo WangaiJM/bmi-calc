@@ -1,15 +1,19 @@
 @use "../../../index.scss" as *;
 
 .tips {
-  padding-block: var(--spacing-600);
+  padding: var(--spacing-600);
+  margin-block: var(--spacing-600);
   @include flex(column);
   gap: var(--spacing-500);
+  background-color: hsla(var(--gradient-1), 0.25);
 
   @include breakpoint("tablet") {
-    padding-block: var(--spacing-700);
+    padding: var(--spacing-700);
+    margin-block: var(--spacing-700);
   }
   @include breakpoint("desktop") {
-    padding-block: var(--spacing-1200);
+    padding: var(--spacing-1200);
+    margin-block: var(--spacing-1200);
     @include flex(row);
   }
 
