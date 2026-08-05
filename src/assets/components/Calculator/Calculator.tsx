@@ -47,10 +47,23 @@ const Calculator = () => {
     setBmi(weight / heightInMtrs ** 2);
   }, [height, weight]);
 
-  const minweight =
+  const minWeight =
     height !== null ? (18.5 * (height / 100) ** 2).toFixed(1) : null;
-  const maxweight =
+  const maxWeight =
     height !== null ? (24.9 * (height / 100) ** 2).toFixed(1) : null;
+
+  const toStLbs = (kg: number) => {
+    if (kg == null) return null;
+
+    const totalLbs = kg * 2.20462;
+    const stones = Math.floor(totalLbs / 14);
+    const pounds = Math.round(totalLbs % 14);
+
+    return { stones, pounds };
+  };
+
+  const min = toStLbs(Number(minWeight));
+  const max = toStLbs(Number(maxWeight));
 
   useEffect(() => {
     if (bmi === null) {
@@ -161,9 +174,7 @@ const Calculator = () => {
       {unit === "imperial" && (
         <div className="calc-imperial">
           <div className="calc-group">
-            <label htmlFor="metric-height" className="text-preset-7">
-              Height
-            </label>
+            <label className="text-preset-7">Height</label>
             <div className="calc-group-inputs">
               <div className="input-wrapper text-preset-4">
                 <input
@@ -196,9 +207,7 @@ const Calculator = () => {
             </div>
           </div>
           <div className="calc-group">
-            <label htmlFor="metric-weight" className="text-preset-7">
-              Weight
-            </label>
+            <label className="text-preset-7">Weight</label>
             <div className="calc-group-inputs">
               <div className="input-wrapper text-preset-4">
                 <input
@@ -241,7 +250,7 @@ const Calculator = () => {
           </p>
         </div>
       )}
-      {bmi !== null && maxweight && minweight && (
+      {bmi !== null && maxWeight && minWeight && (
         <div className="results results-output">
           <div className="results-outcome">
             <p className="text-preset-6">Your results is</p>
@@ -252,8 +261,20 @@ const Calculator = () => {
               Your BMI suggests you’re{" "}
               <span className="text-preset-5">{bmiCategory}</span>. Your ideal
               weight is between{" "}
-              <span className="text-preset-6">{minweight} Kgs</span> -{" "}
-              <span className="text-preset-6"> {maxweight} Kgs</span>
+              {unit == "metric" && (
+                <>
+                  <span className="text-preset-6">{minWeight} Kgs</span> -{" "}
+                  <span className="text-preset-6"> {maxWeight} Kgs</span>
+                </>
+              )}
+              {unit == "imperial" && (
+                <>
+                  <span className="text-preset-6">{min?.stones} St</span>{" "}
+                  <span className="text-preset-6">{min?.pounds} Lbs</span> and{" "}
+                  <span className="text-preset-6">{max?.stones} St</span>{" "}
+                  <span className="text-preset-6">{max?.pounds} Lbs</span>
+                </>
+              )}
             </p>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 .calc {
   background-color: hsl(var(--white));
-  box-shadow: 0 10px 20px hsla(var(--blue-900), 0.5);
+  box-shadow: 0 10px 20px hsla(var(--blue-900), 0.25);
   padding: var(--spacing-300);
   border-radius: var(--spacing-200);
   @include flex(column);

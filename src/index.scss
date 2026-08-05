@@ -195,6 +195,5 @@ body {
   min-height: 100vh;
   max-width: calc(10 * var(--spacing-1800));
   margin: auto;
-  outline: 1px solid red;
   @include container;
 }
